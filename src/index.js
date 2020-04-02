@@ -18,8 +18,7 @@ const client = new ApolloClient({
       }
     });
   },
-  // uri: "https://markedit-server.herokuapp.com/"
-  uri: "http://localhost:5000/"
+  uri: "https://markedit-server.herokuapp.com/"
 });
 
 ReactDOM.render(
