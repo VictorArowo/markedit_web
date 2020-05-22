@@ -18,17 +18,17 @@ const Documents = ({ history }) => {
     onError(err) {
       const errors = err.graphQLErrors[0].extensions.exception.errors;
       setDeleteErrors(errors);
-    }
+    },
   });
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     await deleteDocument({ variables: { docId: id } });
     dispatch(deleteDoc(id));
   };
 
-  const openDocument = id => {
+  const openDocument = (id) => {
     console.log(id);
-    const docToOpen = credentials.docs.find(elem => elem.docId === id);
+    const docToOpen = credentials.docs.find((elem) => elem.docId === id);
 
     localStorage.setItem(
       "currDoc",
@@ -39,15 +39,15 @@ const Documents = ({ history }) => {
 
   return (
     <ApplicationShell page="documents">
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow px-5 py-6 sm:px-6">
+      <div className="px-5 py-6 mx-auto bg-white rounded-lg shadow max-w-7xl sm:px-6">
         {credentials.docs.length > 0 ? (
-          credentials.docs.map(doc => (
+          credentials.docs.map((doc) => (
             <div className="flex justify-between mb-7 lg:px-10">
               <div>{doc.name}</div>
               <div className="flex">
                 <FaRegEye
                   onClick={() => openDocument(doc.docId)}
-                  className=" cursor-pointer"
+                  className="cursor-pointer "
                 />
                 <FaTrashAlt
                   className="ml-10 cursor-pointer"
